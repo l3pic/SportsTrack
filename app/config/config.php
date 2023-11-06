@@ -1,6 +1,6 @@
 <?php
   // DB Params
-  define('DB_HOST', 'test');
+  define('DB_HOST', 'localhost');
   define('DB_USER', 'dbu5062590');
   define('DB_PASS', '5dEyZj5ZNHV3');
   define('DB_NAME', 'dbs12246563');
