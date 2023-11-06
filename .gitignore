@@ -1,7 +1,4 @@
-.htaccess
-
-app/config/config.php
-
-app/.htaccess
-
-public/.htaccess
+#ignore all .htacces files
+*.htaccess
+#ignore config.php
+config.php
