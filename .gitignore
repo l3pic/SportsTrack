@@ -1,0 +1,7 @@
+.htaccess
+
+app/config/config.php
+
+app/.htaccess
+
+public/.htaccess
