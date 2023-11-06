@@ -2,3 +2,8 @@
 *.htaccess
 #ignore config.php
 config.php
+/.idea/dataSources.xml
+/.idea/modules.xml
+/.idea/php.xml
+/.idea/SportsTrack.iml
+/.idea/vcs.xml
