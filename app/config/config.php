@@ -1,9 +1,9 @@
 <?php
   // DB Params
-  define('DB_HOST', 'localhost');
-  define('DB_USER', 'dbu5062590');
-  define('DB_PASS', '5dEyZj5ZNHV3');
-  define('DB_NAME', 'dbs12246563');
+  define('DB_HOST', '192.168.33.59');
+  define('DB_USER', 'dbu5165165');
+  define('DB_PASS', '#OQsroiJO7c8XI3je');
+  define('DB_NAME', 'sportstrack');
   define('DB_PORT', '3306');
 
   // App Root
