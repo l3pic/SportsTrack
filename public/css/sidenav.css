@@ -1,0 +1,55 @@
+.sidenav {
+    width: 250px;
+    position: absolute;
+    top: 70px;
+    left: 0;
+    height: calc(100% - 70px);
+    background: #362189;
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+}
+
+.sidenav summary {
+    cursor: pointer;
+    color: white;
+    padding: 10px;
+    font-size: 20px;
+    border-bottom: 4px solid #215e89;
+    text-align: center;
+}
+
+.sidenav a {
+    color: white;
+    display: block;
+    padding: 10px;
+    text-decoration: none;
+    font-size: 20px;
+    border-bottom: 2px solid #215e89;
+    text-align: center;
+}
+
+.sidenav a:hover {
+    background: #215e89;
+}
+
+.sidenav-links {
+    max-height: calc(100% - 104px);
+    overflow-y: scroll;
+    overflow-x: hidden;
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}
+
+.sidenav-links::-webkit-scrollbar {
+    display: none;
+}
+
+.sidenav-useraction {
+    border-top: 4px solid #215e89;
+    margin-top: auto;
+}
+
+.sidenav-useraction li:last-child a {
+    border-bottom: none;
+}
