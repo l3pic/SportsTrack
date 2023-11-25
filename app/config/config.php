@@ -14,3 +14,7 @@
   define('SITENAME', 'SportsTrack');
   // App verison
   define('APPVERSION', '1.0.0');
+
+
+  // API BaseURL
+  define('APIBASEURL', 'http://api.sportradar.us/');

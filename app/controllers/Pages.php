@@ -1,29 +1,34 @@
 <?php
   class Pages extends Controller {
     public function __construct() {
-
+      $this->soccerModel = $this->model('Soccer');
     }
 
     // Default method
     public function index() {
-      if(isLoggedIn()) {
-        redirect('posts');
-      }
+      //get Favorites
+//      $soccerfav = $this->soccerModel->getSoccerFav();
+      $soccerfav = [new stdClass()];
+      $soccerfav[0]->name = 'Gerasin, Maksim';
+      $soccerfav[0]->playerid = 'sr:player:68408';
+
 
       $data = [
-        'title' => 'SharePosts',
-        'description' => 'Simple social network build on the TraversyMVC PHP framework',
+        'soccerfav' => $soccerfav,
       ];
 
       $this->view('pages/index', $data);
     }
 
-    public function about() {
+
+    public function soccer() {
+      $players = $this->soccerModel->getPlayers();
+
+
       $data = [
-        'title' => 'About',
-        'description' => 'App to share posts with other users',
+        'players' => $players,
       ];
 
-      $this->view('pages/about', $data);
+      $this->view('pages/soccer', $data);
     }
   }
