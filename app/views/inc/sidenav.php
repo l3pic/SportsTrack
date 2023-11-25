@@ -3,11 +3,11 @@
     <details>
       <summary>Sportarten</summary>
       <ul>
-        <li><a href="<?= URLROOT;?>/sport/soccer">Fußball</a></li>
-        <li><a href="<?= URLROOT;?>/sport/football">Amarican Football</a></li>
-        <li><a href="<?= URLROOT;?>/sport/baseball">Baseball</a></li>
-        <li><a href="<?= URLROOT;?>/sport/golf">Golf</a></li>
-        <li><a href="<?= URLROOT;?>/sport/basketball">Basketball</a></li>
+        <li><a href="<?= URLROOT;?>/pages/soccer">Fußball</a></li>
+        <li><a href="<?= URLROOT;?>/pages/football">Amarican Football</a></li>
+        <li><a href="<?= URLROOT;?>/pages/baseball">Baseball</a></li>
+        <li><a href="<?= URLROOT;?>/pages/golf">Golf</a></li>
+        <li><a href="<?= URLROOT;?>/pages/basketball">Basketball</a></li>
       </ul>
     </details>
   </div>
