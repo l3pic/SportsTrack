@@ -23,9 +23,11 @@
 
     public function weather($lat, $lon) {
       $weatherdata = $this->weatherModel->getWeatherByLatLon($lat, $lon);
+      $city = $this->weatherModel->getCityByGeo($lat, $lon);
 
       $data = [
         'weather' => $weatherdata,
+        'city' => $city,
       ];
 
       $this->view('pages/weather', $data);
