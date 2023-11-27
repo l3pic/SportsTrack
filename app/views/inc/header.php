@@ -14,6 +14,7 @@
   <script src="<?= URLROOT; ?>/js/aos.js"></script>
   <script src="<?= URLROOT; ?>/js/main.js"></script>
   <script src="<?= URLROOT; ?>/js/jquery-3.7.0.min.js"></script>
+  <script src="https://kit.fontawesome.com/d2f6aa7ce4.js" crossorigin="anonymous"></script>
 </head>
 <body>
   <div class="header">

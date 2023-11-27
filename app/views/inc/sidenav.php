@@ -1,15 +1,26 @@
 <div class="sidenav" id="sidenav">
   <div class="sidenav-links">
-    <details>
-      <summary>Sportarten</summary>
-      <ul>
-        <li><a href="<?= URLROOT;?>/pages/soccer">Fußball</a></li>
-        <li><a href="<?= URLROOT;?>/pages/football">Amarican Football</a></li>
-        <li><a href="<?= URLROOT;?>/pages/baseball">Baseball</a></li>
-        <li><a href="<?= URLROOT;?>/pages/golf">Golf</a></li>
-        <li><a href="<?= URLROOT;?>/pages/basketball">Basketball</a></li>
-      </ul>
-    </details>
+    <ul>
+      <li><a href="<?= URLROOT;?>/"><i class="fa-solid fa-house"></i> Home</a></li>
+      <details>
+        <summary><i class="fa-solid fa-star"></i> Favoriten</summary>
+        <ul>
+<!--          hier aus Datenbank einfügen-->
+<!--          bsp:-->
+          <details class="sidenav-s1">
+            <summary><i class="fa-solid fa-location-dot"></i> Berlin</summary>
+            <ul>
+              <li><a href="<?= URLROOT;?>/pages/weather/50/50"><i class="fa-solid fa-cloud"></i> Wetter</a></li>
+              <li><a href="<?= URLROOT;?>/pages/minforecast/50/50"><i class="fa-regular fa-clock"></i> Minütlich</a></li>
+              <li><a href="<?= URLROOT;?>/pages/hourforecast/50/50"><i class="fa-solid fa-clock"></i> Stündlich</a></li>
+              <li><a href="<?= URLROOT;?>/pages/dayforecast/50/50"><i class="fa-solid fa-calendar-days"></i> Täglich</a></li>
+              <li><a href="<?= URLROOT;?>/pages/polution/50/50"><i class="fa-solid fa-smog"></i> Luftverschmutzung</a></li>
+            </ul>
+          </details>
+
+        </ul>
+      </details>
+    </ul>
   </div>
 
   <?php if (isset($_SESSION['user_id'])) : ?>

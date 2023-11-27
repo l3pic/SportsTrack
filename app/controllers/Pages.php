@@ -1,7 +1,7 @@
 <?php
   class Pages extends Controller {
     public function __construct() {
-      $this->soccerModel = $this->model('Soccer');
+      $this->weatherModel = $this->model('Weather');
     }
 
     // Default method
@@ -21,14 +21,13 @@
     }
 
 
-    public function soccer() {
-      $players = $this->soccerModel->getPlayers();
-
+    public function weather($lat, $lon) {
+      $weatherdata = $this->weatherModel->getWeatherByLatLon($lat, $lon);
 
       $data = [
-        'players' => $players,
+        'weather' => $weatherdata,
       ];
 
-      $this->view('pages/soccer', $data);
+      $this->view('pages/weather', $data);
     }
   }

@@ -11,10 +11,9 @@
   // URL Root
   define('URLROOT', 'http://localhost');
   // Site Name
-  define('SITENAME', 'SportsTrack');
+  define('SITENAME', 'Windy');
   // App verison
   define('APPVERSION', '1.0.0');
 
-
-  // API BaseURL
-  define('APIBASEURL', 'http://api.sportradar.us/');
+  //API KEY
+  define('APIKEY', '67e94f3a160a27dbeaabdef92843cdd3');
