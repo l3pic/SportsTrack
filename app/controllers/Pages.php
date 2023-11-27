@@ -6,22 +6,36 @@
 
     // Default method
     public function index() {
-      //get Favorites
-//      $soccerfav = $this->soccerModel->getSoccerFav();
-      $soccerfav = [new stdClass()];
-      $soccerfav[0]->name = 'Gerasin, Maksim';
-      $soccerfav[0]->playerid = 'sr:player:68408';
-
-
       $data = [
-        'soccerfav' => $soccerfav,
+
       ];
 
       $this->view('pages/index', $data);
     }
 
+    public function weather($lat = null, $lon = null) {
+      if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+        $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
 
-    public function weather($lat, $lon) {
+        $city = trim($_POST['city']);
+        $city = strtolower($city);
+        $city = ucfirst($city);
+
+        $geo = $this->weatherModel->getGeoByCity($city);
+
+        if (empty($geo)) {
+          $data = [
+            'error' => 'Stadt nicht gefunden',
+          ];
+
+          $this->view('pages/weather', $data);
+          exit();
+        }
+
+        $lat = $geo[0]->lat;
+        $lon = $geo[0]->lon;
+      }
+
       $weatherdata = $this->weatherModel->getWeatherByLatLon($lat, $lon);
       $city = $this->weatherModel->getCityByGeo($lat, $lon);
 
