@@ -1,42 +1,136 @@
-<?php require APPROOT . '/views/inc/header.php';?>
-<?php require APPROOT . '/views/inc/sidenav.php';?>
 <head>
   <link rel="stylesheet" href="<?= URLROOT; ?>/css/home.css">
 </head>
-<script>
-  if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(function(position) {
-      var latitude = position.coords.latitude;
-      var longitude = position.coords.longitude;
-
-      console.log("Latitude: " + latitude + ", Longitude: " + longitude);
-
-      // Hier könntest du die Koordinaten für weitere Verarbeitung verwenden
-    });
-  } else {
-    console.log("Geolocation wird nicht unterstützt.");
-  }
-</script>
+<?php require APPROOT . '/views/inc/header.php';?>
+<?php require APPROOT . '/views/inc/sidenav.php';?>
 <div class="main">
-  <div class="local-weather">
+  <?php if (isset($data['weather'])) : ?>
+    <script>console.log(<?= json_encode($data['weather']); ?>)</script>
+    <script>console.log(<?= json_encode($data['city']); ?>)</script>
+    <div class="local-weather">
+      <div class="lw-row">
+        <i class="fa-solid fa-location-dot lw-loc"></i>
+        <h1 class="lw-city"><?= $data['city'][0]->name; ?></h1>
+        <span class="lw-local">Lokal</span>
+      </div>
+      <div class="lw-row">
+        <img src="https://openweathermap.org/img/wn/<?= $data['weather']->current->weather[0]->icon; ?>@2x.png"
+             alt="<?= $data['weather']->current->weather[0]->description; ?>" class="lw-icon">
+        <span class="lw-temp"><?= $data['weather']->current->temp; ?>°C</span>
+      </div>
+      <div class="lw-row">
+        <span class="lw-desc"><?= $data['weather']->current->weather[0]->description; ?></span>
+        <span class="lw-time"><?= date('H:i', $data['weather']->current->dt); ?></span>
+      </div>
+    </div>
+
+    <div class="links-container">
+      <div class="links">
+        <a href="<?= URLROOT; ?>/pages/minforecast/<?= $data['city'][0]->lat; ?>/<?= $data['city'][0]->lon; ?>"
+           class="link">
+          <i class="fa-regular fa-clock"></i>
+          <span class="link-text">Minütlich</span>
+        </a>
+      </div>
+      <div class="links">
+        <a href="<?= URLROOT; ?>/pages/hourforecast/<?= $data['city'][0]->lat; ?>/<?= $data['city'][0]->lon; ?>"
+           class="link">
+          <i class="fa-solid fa-clock"></i>
+          <span class="link-text">Stündlich</span>
+        </a>
+      </div>
+      <div class="links">
+        <a href="<?= URLROOT; ?>/pages/dayforecast/<?= $data['city'][0]->lat; ?>/<?= $data['city'][0]->lon; ?>"
+           class="link">
+          <i class="fa-solid fa-calendar-days"></i>
+          <span class="link-text">Täglich</span>
+        </a>
+      </div>
+      <div class="links">
+        <a href="<?= URLROOT; ?>/pages/polution/<?= $data['city'][0]->lat; ?>/<?= $data['city'][0]->lon; ?>"
+           class="link">
+          <i class="fa-solid fa-smog"></i>
+          <span class="link-text">Luftverschmutzung</span>
+        </a>
+      </div>
+    </div>
+
+  <?php else : ?>
+    <div class="local-weather">
     <div class="lw-row">
       <i class="fa-solid fa-location-dot lw-loc"></i>
-      <h1 class="lw-city">Berlin</h1>
+      <h1 class="lw-city">--</h1>
+      <span class="lw-local">Lokal</span>
     </div>
     <div class="lw-row">
       <img src="https://openweathermap.org/img/wn/10d@2x.png" alt="light rain" class="lw-icon">
-      <span class="lw-temp">12°C</span>
+      <span class="lw-temp">--°C</span>
     </div>
     <div class="lw-row">
-      <span class="lw-desc">Leichter Regen</span>
-      <span class="lw-time">18:50</span>
+      <span class="lw-desc">--</span>
+      <span class="lw-time">--:--</span>
     </div>
   </div>
 
+  <div class="links-container" aria-disabled="true">
+    <div class="links">
+      <a href="<?= URLROOT; ?>/pages/minforecast/50/50" class="link">
+        <i class="fa-regular fa-clock"></i>
+        <span class="link-text">Minütlich</span>
+      </a>
+    </div>
+    <div class="links">
+      <a href="<?= URLROOT; ?>/pages/hourforecast/50/50" class="link">
+        <i class="fa-solid fa-clock"></i>
+        <span class="link-text">Stündlich</span>
+      </a>
+    </div>
+    <div class="links">
+      <a href="<?= URLROOT; ?>/pages/dayforecast/50/50" class="link">
+        <i class="fa-solid fa-calendar-days"></i>
+        <span class="link-text">Täglich</span>
+      </a>
+    </div>
+    <div class="links">
+      <a href="<?= URLROOT; ?>/pages/polution/50/50" class="link">
+        <i class="fa-solid fa-smog"></i>
+        <span class="link-text">Luftverschmutzung</span>
+      </a>
+    </div>
+  </div>
+  <?php endif; ?>
+
   <form class="search-city" action="<?= URLROOT; ?>/pages/weather" method="POST">
-    <input type="text" name="city" placeholder="Stadt">
+    <input type="text" name="city" placeholder="Stadt" required>
     <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
   </form>
+
+  <div class="fav-container">
+    <h2 class="fav-title">Favoriten</h2>
+    <?php if (isset($data['favoriten'])) : ?>
+      <?php foreach ($data['favoriten'] as $favorit) : ?>
+        <div class="fav">
+          <a href="<?= URLROOT; ?>/pages/weather/<?= $favorit->lat; ?>/<?= $favorit->lon; ?>" class="fav-link">
+            <i class="fa-solid fa-location-dot"></i>
+            <span class="fav-text"><?= $favorit->name; ?></span>
+          </a>
+          <a href="<?= URLROOT; ?>/pages/deletefav/<?= $favorit->id; ?>" class="fav-delete">
+            <i class="fa-solid fa-trash"></i>
+          </a>
+        </div>
+      <?php endforeach; ?>
+    <?php else : ?>
+      <?php if (isLoggedIn()) : ?>
+        <div class="fav">
+          <span class="fav-text">Keine Favoriten</span>
+        </div>
+      <?php else: ?>
+        <div class="fav">
+          <span class="fav-text">Nicht angemeldet</span>
+        </div>
+      <?php endif; ?>
+    <?php endif; ?>
+  </div>
 </div>
 
 <?php require APPROOT . '/views/inc/footer.php';?>

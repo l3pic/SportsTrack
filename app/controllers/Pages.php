@@ -6,9 +6,25 @@
 
     // Default method
     public function index() {
-      $data = [
+      if (isset($_SESSION['location'])) {
+        $lat = $_SESSION['location']['lat'];
+        $lon = $_SESSION['location']['lon'];
+        $weatherdata = $this->weatherModel->getWeatherByLatLon($lat, $lon);
+        $city = $this->weatherModel->getCityByGeo($lat, $lon);
 
-      ];
+        $data = [
+          'weather' => $weatherdata,
+          'city' => $city,
+          'lat' => $lat,
+          'lon' => $lon,
+        ];
+      } else {
+        $data = [
+
+        ];
+      }
+
+
 
       $this->view('pages/index', $data);
     }
@@ -42,6 +58,8 @@
       $data = [
         'weather' => $weatherdata,
         'city' => $city,
+        'lat' => $lat,
+        'lon' => $lon,
       ];
 
       $this->view('pages/weather', $data);

@@ -1,8 +1,8 @@
-<?php require_once APPROOT . '/views/inc/header.php'; ?>
-<?php require_once APPROOT . '/views/inc/sidenav.php'; ?>
 <head>
   <link rel="stylesheet" href="<?= URLROOT; ?>/css/home.css">
 </head>
+<?php require_once APPROOT . '/views/inc/header.php'; ?>
+<?php require_once APPROOT . '/views/inc/sidenav.php'; ?>
 <?php if (isset($data['weather'])) : ?>
   <script>console.log(<?= json_encode($data['weather']); ?>)</script>
   <script>console.log(<?= json_encode($data['city']); ?>)</script>
