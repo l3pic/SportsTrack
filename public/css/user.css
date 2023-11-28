@@ -1,0 +1,15 @@
+
+.user-action{
+padding: 20px;
+border: #FEC700 2px solid;
+background-color: #005193;
+        color: white;
+}
+
+.ua-row{
+    margin-top: 5px;
+    display: flex;
+    flex-direction: column;
+}
+.col d-grid{
+    margin-top: 5px;

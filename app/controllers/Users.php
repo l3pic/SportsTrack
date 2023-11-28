@@ -26,7 +26,7 @@
 
         // Validate Email
         if(empty($data['email'])) {
-          $data['email_error'] = 'Please enter email';
+          $data['email_error'] = 'E-Mail eingeben!';
         } else {
           // Check email
           if($this->userModel->findUserByEmail($data['email'])) {
@@ -36,19 +36,19 @@
 
         // Validate Name
         if(empty($data['name'])) {
-          $data['name_error'] = 'Please enter name';
+          $data['name_error'] = 'Namen eingeben!';
         }
 
         // Validate password
         if(empty($data['password'])) {
-          $data['password_error'] = 'Please enter password';
+          $data['password_error'] = 'Passwort eingeben!';
         } elseif (strlen($data['password']) < 6) {
           $data['password_error'] = 'Password must be at least 6 characters';
         }
 
         // Validate confirm_password
         if(empty($data['confirm_password'])) {
-          $data['confirm_password_error'] = 'Please confirm password';
+          $data['confirm_password_error'] = 'Passwort erneut eingeben!';
         } else {
           if($data['password'] != $data['confirm_password']) {
             $data['confirm_password_error'] = 'Passwords do not match';

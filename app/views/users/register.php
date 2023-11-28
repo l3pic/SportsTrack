@@ -1,49 +1,57 @@
-<?php require APPROOT . '/views/inc/header.php';?>
-  <div class="row">
-    <div class="col-md-6 mx-auto">
-      <div class="card card-body bg-light mt-5">
-        <h2>Create an account</h2>
-        <p>Please fill out this form to register with us</p>
-        <form action="<?php echo URLROOT; ?>/users/register" method="post">
-          <div class="form-group">
-            <label for="name">Name: <sup>*</sup></label>
-            <input type="text" name="name"
-                   class="form-control form-control-lg <?php echo (!empty($data['name_error'])) ? 'is-invalid' : '';?>"
-                   value="<?php echo $data['name']; ?>">
-            <span class="invalid-feedback"><?php echo $data['name_error']; ?></span>
-          </div>
-          <div class="form-group">
-            <label for="email" class="mt-4">Email: <sup>*</sup></label>
-            <input type="email" name="email"
-                   class="form-control form-control-lg <?php echo (!empty($data['email_error'])) ? 'is-invalid' : '';?>"
-                   value="<?php echo $data['email']; ?>">
-            <span class="invalid-feedback"><?php echo $data['email_error']; ?></span>
-          </div>
-          <div class="form-group">
-            <label for="password" class="mt-4">Password: <sup>*</sup></label>
-            <input type="password" name="password"
-                   class="form-control form-control-lg <?php echo (!empty($data['password_error'])) ? 'is-invalid' : '';?>"
-                   value="<?php echo $data['password']; ?>">
-            <span class="invalid-feedback"><?php echo $data['password_error']; ?></span>
-          </div>
-          <div class="form-group">
-            <label for="confirm_password" class="mt-4">Confirm Password: <sup>*</sup></label>
-            <input type="password" name="confirm_password"
-                   class="form-control form-control-lg <?php echo (!empty($data['confirm_password_error'])) ? 'is-invalid' : '';?>"
-                   value="<?php echo $data['confirm_password']; ?>">
-            <span class="invalid-feedback"><?php echo $data['confirm_password_error']; ?></span>
-          </div>
-          
-          <div class="row mt-4">
-            <div class="col d-grid">
-              <input type="submit" value="Register" class="btn btn-success btn-block">
+<head>
+    <link rel="stylesheet" href="<?= URLROOT; ?>/css/user.css">
+</head>
+<?php require APPROOT . '/views/inc/header.php'; ?>
+<?php require APPROOT . '/views/inc/sidenav.php'; ?> // Einbinden der sidenav
+
+    <div class="main" style="justify-content: center">
+        <div class="user-action">
+            <div class="titel">
+                <h2>Account erstellen!</h2>
+                <p>Bitte fülle alle Felder aus um dich anzumelden!</p>
             </div>
-            <div class="col d-grid">
-              <a href="<?php echo URLROOT?>/users/login" class="btn btn-light btn-block">Have an account? Login</a>
-            </div>
-          </div>
-        </form>
-      </div>
+            <form action="<?php echo URLROOT; ?>/users/register" method="post">
+                <div class="ua-row">
+                    <label for="name">Name: <sup>*</sup></label>
+                    <input type="text" name="name"
+                           class="eingabe <?php echo (!empty($data['name_error'])) ? 'is-invalid' : ''; ?>"
+                           value="<?php echo $data['name']; ?>">
+                    <span class="invalid-feedback"><?php echo $data['name_error']; ?></span>
+                </div>
+                <div class="ua-row">
+                    <label for="email" class="mt-4">E-mail: <sup>*</sup></label>
+                    <input type="email" name="email"
+                           class="eingabe <?php echo (!empty($data['email_error'])) ? 'is-invalid' : ''; ?>"
+                           value="<?php echo $data['email']; ?>">
+                    <span class="invalid-feedback"><?php echo $data['email_error']; ?></span>
+                </div>
+                <div class="ua-row">
+                    <label for="password" class="mt-4">Passwort: <sup>*</sup></label>
+                    <input type="password" name="password"
+                           class="eingabe <?php echo (!empty($data['password_error'])) ? 'is-invalid' : ''; ?>"
+                           value="<?php echo $data['password']; ?>">
+                    <span class="invalid-feedback"><?php echo $data['password_error']; ?></span>
+                </div>
+                <div class="ua-row">
+                    <label for="confirm_password" class="mt-4">Passwort erneut eingeben: <sup>*</sup></label>
+                    <input type="password" name="confirm_password"
+                           class="eingabe <?php echo (!empty($data['confirm_password_error'])) ? 'is-invalid' : ''; ?>"
+                           value="<?php echo $data['confirm_password']; ?>">
+                    <span class="invalid-feedback"><?php echo $data['confirm_password_error']; ?></span>
+                </div>
+
+                <div class="row mt-4">
+                    <div class="col d-grid">
+                        <input type="submit" value="Register" class="btn btn-success btn-block">
+                    </div>
+                    <div class="col d-grid">
+                        <a href="<?php echo URLROOT ?>/users/login" class="btn btn-light btn-block">Du hast
+                            einen Account? Klick hier!</a>
+                    </div>
+                </div>
+            </form>
+        </div>
     </div>
-  </div>
-<?php require APPROOT . '/views/inc/footer.php';?>
+
+
+<?php require APPROOT . '/views/inc/footer.php'; ?>
