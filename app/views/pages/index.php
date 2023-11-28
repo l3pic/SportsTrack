@@ -1,12 +1,10 @@
 <head>
-  <link rel="stylesheet" href="<?= URLROOT; ?>/css/home.css">
+  <link rel="stylesheet" href="<?= URLROOT; ?>/css/weather.css">
 </head>
-<?php require APPROOT . '/views/inc/header.php';?>
-<?php require APPROOT . '/views/inc/sidenav.php';?>
+<?php require APPROOT . '/views/inc/header.php'; ?>
+<?php require APPROOT . '/views/inc/sidenav.php'; ?>
 <div class="main">
   <?php if (isset($data['weather'])) : ?>
-    <script>console.log(<?= json_encode($data['weather']); ?>)</script>
-    <script>console.log(<?= json_encode($data['city']); ?>)</script>
     <div class="local-weather">
       <div class="lw-row">
         <i class="fa-solid fa-location-dot lw-loc"></i>
@@ -24,14 +22,12 @@
       </div>
     </div>
 
+    <form class="search-city" action="<?= URLROOT; ?>/pages/weather" method="POST">
+      <input type="text" name="city" placeholder="Stadt" required>
+      <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+    </form>
+
     <div class="links-container">
-      <div class="links">
-        <a href="<?= URLROOT; ?>/pages/minforecast/<?= $data['city'][0]->lat; ?>/<?= $data['city'][0]->lon; ?>"
-           class="link">
-          <i class="fa-regular fa-clock"></i>
-          <span class="link-text">Minütlich</span>
-        </a>
-      </div>
       <div class="links">
         <a href="<?= URLROOT; ?>/pages/hourforecast/<?= $data['city'][0]->lat; ?>/<?= $data['city'][0]->lon; ?>"
            class="link">
@@ -57,53 +53,53 @@
 
   <?php else : ?>
     <div class="local-weather">
-    <div class="lw-row">
-      <i class="fa-solid fa-location-dot lw-loc"></i>
-      <h1 class="lw-city">--</h1>
-      <span class="lw-local">Lokal</span>
+      <div class="lw-row">
+        <i class="fa-solid fa-location-dot lw-loc"></i>
+        <h1 class="lw-city">--</h1>
+        <span class="lw-local">Lokal</span>
+      </div>
+      <div class="lw-row">
+        <img src="https://openweathermap.org/img/wn/10d@2x.png" alt="light rain" class="lw-icon">
+        <span class="lw-temp">--°C</span>
+      </div>
+      <div class="lw-row">
+        <span class="lw-desc">--</span>
+        <span class="lw-time">--:--</span>
+      </div>
     </div>
-    <div class="lw-row">
-      <img src="https://openweathermap.org/img/wn/10d@2x.png" alt="light rain" class="lw-icon">
-      <span class="lw-temp">--°C</span>
-    </div>
-    <div class="lw-row">
-      <span class="lw-desc">--</span>
-      <span class="lw-time">--:--</span>
-    </div>
-  </div>
 
-  <div class="links-container" aria-disabled="true">
-    <div class="links">
-      <a href="<?= URLROOT; ?>/pages/minforecast/50/50" class="link">
-        <i class="fa-regular fa-clock"></i>
-        <span class="link-text">Minütlich</span>
-      </a>
+    <form class="search-city" action="<?= URLROOT; ?>/pages/weather" method="POST">
+      <input type="text" name="city" placeholder="Stadt" required>
+      <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+    </form>
+
+    <div class="links-container" aria-disabled="true">
+      <div class="links">
+        <a href="<?= URLROOT; ?>/pages/minforecast/50/50" class="link">
+          <i class="fa-regular fa-clock"></i>
+          <span class="link-text">Minütlich</span>
+        </a>
+      </div>
+      <div class="links">
+        <a href="<?= URLROOT; ?>/pages/hourforecast/50/50" class="link">
+          <i class="fa-solid fa-clock"></i>
+          <span class="link-text">Stündlich</span>
+        </a>
+      </div>
+      <div class="links">
+        <a href="<?= URLROOT; ?>/pages/dayforecast/50/50" class="link">
+          <i class="fa-solid fa-calendar-days"></i>
+          <span class="link-text">Täglich</span>
+        </a>
+      </div>
+      <div class="links">
+        <a href="<?= URLROOT; ?>/pages/polution/50/50" class="link">
+          <i class="fa-solid fa-smog"></i>
+          <span class="link-text">Luftverschmutzung</span>
+        </a>
+      </div>
     </div>
-    <div class="links">
-      <a href="<?= URLROOT; ?>/pages/hourforecast/50/50" class="link">
-        <i class="fa-solid fa-clock"></i>
-        <span class="link-text">Stündlich</span>
-      </a>
-    </div>
-    <div class="links">
-      <a href="<?= URLROOT; ?>/pages/dayforecast/50/50" class="link">
-        <i class="fa-solid fa-calendar-days"></i>
-        <span class="link-text">Täglich</span>
-      </a>
-    </div>
-    <div class="links">
-      <a href="<?= URLROOT; ?>/pages/polution/50/50" class="link">
-        <i class="fa-solid fa-smog"></i>
-        <span class="link-text">Luftverschmutzung</span>
-      </a>
-    </div>
-  </div>
   <?php endif; ?>
-
-  <form class="search-city" action="<?= URLROOT; ?>/pages/weather" method="POST">
-    <input type="text" name="city" placeholder="Stadt" required>
-    <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
-  </form>
 
   <div class="fav-container">
     <h2 class="fav-title">Favoriten</h2>
@@ -133,4 +129,4 @@
   </div>
 </div>
 
-<?php require APPROOT . '/views/inc/footer.php';?>
+<?php require APPROOT . '/views/inc/footer.php'; ?>

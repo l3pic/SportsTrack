@@ -1,5 +1,5 @@
 <head>
-  <link rel="stylesheet" href="<?= URLROOT; ?>/css/home.css">
+  <link rel="stylesheet" href="<?= URLROOT; ?>/css/weather.css">
 </head>
 <?php require_once APPROOT . '/views/inc/header.php'; ?>
 <?php require_once APPROOT . '/views/inc/sidenav.php'; ?>
@@ -21,7 +21,32 @@
         <span class="lw-time"><?= date('H:i', $data['weather']->current->dt); ?></span>
       </div>
     </div>
+
+    <div class="links-container">
+      <div class="links">
+        <a href="<?= URLROOT; ?>/pages/hourforecast/<?= $data['city'][0]->lat; ?>/<?= $data['city'][0]->lon; ?>"
+           class="link">
+          <i class="fa-solid fa-clock"></i>
+          <span class="link-text">Stündlich</span>
+        </a>
+      </div>
+      <div class="links">
+        <a href="<?= URLROOT; ?>/pages/dayforecast/<?= $data['city'][0]->lat; ?>/<?= $data['city'][0]->lon; ?>"
+           class="link">
+          <i class="fa-solid fa-calendar-days"></i>
+          <span class="link-text">Täglich</span>
+        </a>
+      </div>
+      <div class="links">
+        <a href="<?= URLROOT; ?>/pages/polution/<?= $data['city'][0]->lat; ?>/<?= $data['city'][0]->lon; ?>"
+           class="link">
+          <i class="fa-solid fa-smog"></i>
+          <span class="link-text">Luftverschmutzung</span>
+        </a>
+      </div>
+    </div>
   </div>
+
 <?php else : ?>
 <!--error-->
 <?php endif; ?>

@@ -66,6 +66,7 @@
   background-color: #e0e0e0;
   height: fit-content;
   width: 600px;
+  justify-content: space-around;
 }
 
 .links-container a {
@@ -147,4 +148,77 @@
   height: fit-content;
   width: 600px;
   justify-content: space-between;
+}
+
+.hf-container {
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #e0e0e0;
+  height: fit-content;
+  width: 600px;
+  overflow-y: scroll;
+  scrollbar-width: none;
+}
+
+.hf-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 5px;
+  background-color: #fff;
+  height: fit-content;
+}
+
+.hf-icon {
+  height: 50px;
+  width: 50px;
+  margin-left: 20px;
+}
+
+.hf-temp {
+  font-size: 25px;
+  margin-left: 30px;
+  width: 90px;
+  text-align: right;
+}
+
+.hf-desc {
+  font-size: 15px;
+  margin-left: 40px;
+}
+
+.hf-time {
+  font-size: 15px;
+  font-weight: bold;
+  margin-left: 10px;
+  width: 40px;
+}
+
+/* ===== Scrollbar CSS ===== */
+/* Firefox */
+* {
+  scrollbar-width: auto;
+  scrollbar-color: #005193 #ffffff;
+}
+
+/* Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+  width: 16px;
+}
+
+*::-webkit-scrollbar-track {
+  background: #ffffff;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #005193;
+  border-radius: 10px;
+  border: 3px solid #ffffff;
 }

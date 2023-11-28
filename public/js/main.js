@@ -9,32 +9,30 @@ function togglesidenav(element) {
   }
 }
 
+if (locationIsset == 0) {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(function(position) {
+      var latitude = position.coords.latitude;
+      var longitude = position.coords.longitude;
 
-if (navigator.geolocation) {
-  navigator.geolocation.getCurrentPosition(function(position) {
-    var latitude = position.coords.latitude;
-    var longitude = position.coords.longitude;
-
-    console.log("Latitude: " + latitude + ", Longitude: " + longitude);
-    //ajax set location wit setSessionVar
-    $.ajax({
-      url: '../ajax/setSessionVar.php',
-      type: 'POST',
-      data: {
-        varName: 'location',
-        varValue: {
-          lat: latitude,
-          lon: longitude
+      console.log("Latitude: " + latitude + ", Longitude: " + longitude);
+      //ajax set location wit setSessionVar
+      $.ajax({
+        url: '../ajax/setSessionVar.php',
+        type: 'POST',
+        data: {
+          varName: 'location',
+          varValue: {
+            lat: latitude,
+            lon: longitude
+          }
+        },
+        success: function(data) {
+          window.location.reload();
         }
-      },
-      success: function(data) {
-        console.log(data);
-      }
+      });
     });
-
-
-    // Hier könntest du die Koordinaten für weitere Verarbeitung verwenden
-  });
-} else {
-  console.log("Geolocation wird nicht unterstützt.");
+  } else {
+    console.log("Geolocation wird nicht unterstützt.");
+  }
 }

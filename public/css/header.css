@@ -41,6 +41,7 @@
     font-size: 40px;
     align-self: center;
     margin-left: -45px;
+    cursor: pointer;
 }
 
 .header-logo {
