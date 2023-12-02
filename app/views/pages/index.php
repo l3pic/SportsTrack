@@ -38,5 +38,5 @@
     <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
   </form>
 </div>
-
+<img src="<?= URLROOT;?>/ " alt="">
 <?php require APPROOT . '/views/inc/footer.php';?>
