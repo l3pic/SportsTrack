@@ -1,5 +1,10 @@
+.main{
+    background-image: URL('https://picsum.photos/1920/1080'); /**erzeugt zufälliges Hintergrundbild von picsum**/
+
+}
 
 .user-action{
+    min-width: 250px;
 padding: 20px;
 border: #FEC700 2px solid;
 background-color: #005193;
@@ -11,5 +16,27 @@ background-color: #005193;
     display: flex;
     flex-direction: column;
 }
-.col d-grid{
-    margin-top: 5px;
+.row{
+    margin-top: 40px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.row input{
+    background-color: #FEC700;
+    padding: 3px;
+    cursor: pointer ;
+}
+.row a{
+    color: #FEC700;
+    font-size: 15px;
+}
+.ua-row label{
+    font-size: 14px;
+}
+
+.titel{
+    align-items: center;
+    display: flex;
+    flex-direction:column;
+}
