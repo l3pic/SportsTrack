@@ -3,7 +3,7 @@
   define('DB_HOST', '192.168.33.59');
   define('DB_USER', 'dbu5165165');
   define('DB_PASS', '#OQsroiJO7c8XI3je');
-  define('DB_NAME', 'sportstrack');
+  define('DB_NAME', 'windy');
   define('DB_PORT', '3306');
 
   // App Root

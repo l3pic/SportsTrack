@@ -19,13 +19,6 @@
                 <span class="invalid-feedback"><?php echo $data['name_error']; ?></span>
             </div>
             <div class="ua-row">
-                <label for="email" class="mt-4">E-mail: <sup>*</sup></label>
-                <input type="email" name="email"
-                       class="eingabe <?php echo (!empty($data['email_error'])) ? 'is-invalid' : ''; ?>"
-                       value="<?php echo $data['email']; ?>">
-                <span class="invalid-feedback"><?php echo $data['email_error']; ?></span>
-            </div>
-            <div class="ua-row">
                 <label for="password" class="mt-4">Passwort: <sup>*</sup></label>
                 <input type="password" name="password"
                        class="eingabe <?php echo (!empty($data['password_error'])) ? 'is-invalid' : ''; ?>"

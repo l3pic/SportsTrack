@@ -8,10 +8,9 @@
 
     // Register user
     public function register($data) {
-      $this->db->query('INSERT INTO users (name, email, password) VALUES (:name, :email, :password)');
+      $this->db->query('INSERT INTO users (username, password) VALUES (:name, :password)');
       // Bind values
       $this->db->bind(':name', $data['name']);
-      $this->db->bind(':email', $data['email']);
       $this->db->bind(':password', $data['password']);
 
       // Execute
@@ -24,9 +23,9 @@
     }
 
     //Login User
-    public function login($email, $password) {
-      $this->db->query('SELECT * FROM users WHERE email = :email');
-      $this->db->bind(':email', $email);
+    public function login($user, $password) {
+      $this->db->query('SELECT * FROM users WHERE username = :username');
+      $this->db->bind(':username', $user);
 
       $row = $this->db->single();
 
@@ -39,11 +38,11 @@
     }
 
 
-    //Find user by email
-    public function findUserByEmail($email) {
-      $this->db->query('SELECT * FROM users WHERE email = :email');
+    //Find user by username
+    public function findUserByUsername($username) {
+      $this->db->query('SELECT * FROM users WHERE username = :username');
       // Bind values
-      $this->db->bind(':email', $email);
+      $this->db->bind(':username', $username);
 
       $row = $this->db->single();
 
