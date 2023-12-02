@@ -19,3 +19,10 @@ html, body {
     transition: .5s;
 }
 
+.aria-inactive {
+    pointer-events: none;
+}
+
+.aria-inactive * {
+    color: grey !important;
+}

@@ -8,3 +8,11 @@
       return false;
     }
   }
+
+  function checkSessionVar($varName) {
+    if(isset($_SESSION[$varName])) {
+      return 1;
+    } else {
+      return 0;
+    }
+  }
