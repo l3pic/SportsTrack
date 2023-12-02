@@ -6,6 +6,12 @@ html, body {
     overflow: hidden;
 }
 
+body {
+    background-image: url("https://picsum.photos/2560/1440");
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
 .main {
     position: absolute;
     bottom: 0;

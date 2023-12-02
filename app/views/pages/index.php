@@ -67,7 +67,7 @@
         <span class="lw-time">--:--</span>
       </div>
     </div>
-
+  <?php endif; ?>
   <form class="search-city" action="<?= URLROOT; ?>/pages/weather" method="POST">
     <input type="text" name="city" placeholder="Stadt">
     <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
