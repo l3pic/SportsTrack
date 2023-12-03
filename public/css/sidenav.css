@@ -4,13 +4,14 @@
     top: 70px;
     left: -250px;
     height: calc(100% - 70px);
-    background: linear-gradient(to bottom, #005193, #FEC700);
+    /*background: linear-gradient(to bottom, #005193, #FEC700);*/
+    background: #005193;
     text-decoration: none;
     display: flex;
     flex-direction: column;
     transition: .5s;
-/*    box shadow only on the right site*/
-    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.75);
+    box-shadow: 10px 0 10px rgba(0, 0, 0, 0.2);
+    opacity: .75;
 }
 
 .sidenav summary {

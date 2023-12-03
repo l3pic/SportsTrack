@@ -23,6 +23,7 @@ body {
     flex-direction: column;
     align-items: center;
     transition: .5s;
+    opacity: .75;
 }
 
 .aria-inactive {

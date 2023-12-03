@@ -28,6 +28,13 @@
   </form>
 
   <div class="links-container">
+    <div class="links">
+      <a href="<?= URLROOT; ?>/pages/weather/<?= $data['city'][0]->lat; ?>/<?= $data['city'][0]->lon; ?>"
+         class="link">
+        <i class="fa-solid fa-calendar-day"></i>
+        <span class="link-text">Heute</span>
+      </a>
+    </div>
     <div class="links aria-inactive">
       <a href="<?= URLROOT; ?>/pages/hourforecast/<?= $data['city'][0]->lat; ?>/<?= $data['city'][0]->lon; ?>"
          class="link">
@@ -43,7 +50,7 @@
       </a>
     </div>
     <div class="links">
-      <a href="<?= URLROOT; ?>/pages/polution/<?= $data['city'][0]->lat; ?>/<?= $data['city'][0]->lon; ?>"
+      <a href="<?= URLROOT; ?>/pages/pollution/<?= $data['city'][0]->lat; ?>/<?= $data['city'][0]->lon; ?>"
          class="link">
         <i class="fa-solid fa-smog"></i>
         <span class="link-text">Luftverschmutzung</span>
@@ -52,7 +59,12 @@
   </div>
 
   <div class="hf-container">
+    <?php $currentdate = 0 ?>
     <?php foreach ($data['weather']->hourly as $hour) : ?>
+      <?php if ($currentdate != date('d', $hour->dt)) : ?>
+        <?php $currentdate = date('d', $hour->dt); ?>
+        <div class="hf-date"><?= date('d.m.Y', $hour->dt); ?></div>
+      <?php endif; ?>
       <div class="hf-row">
         <span class="hf-time"><?= date('H:i', $hour->dt); ?></span>
         <img src="https://openweathermap.org/img/wn/<?= $hour->weather[0]->icon; ?>@2x.png"
@@ -64,5 +76,6 @@
   </div>
 <?php else : ?>
   <!--error-->
+  
 <?php endif; ?>
 </div>

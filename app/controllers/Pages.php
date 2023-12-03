@@ -1,106 +1,105 @@
 <?php
+  class Pages extends Controller {
 
-class Pages extends Controller
-{
-    public function __construct()
-    {
-        $this->weatherModel = $this->model('Weather');
+    public $germanDayNames = [
+      'Sonntag', 'Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag', 'Samstag'
+    ];
+
+    public function __construct() {
+      $this->weatherModel = $this->model('Weather');
     }
 
     // Default method
-    public function index()
-    {
-        if (isset($_SESSION['location'])) {
-            $lat = $_SESSION['location']['lat'];
-            $lon = $_SESSION['location']['lon'];
-            $weatherdata = $this->weatherModel->getWeatherByLatLon($lat, $lon);
-            $city = $this->weatherModel->getCityByGeo($lat, $lon);
-
-            $data = [
-                'weather' => $weatherdata,
-                'city' => $city,
-                'lat' => $lat,
-                'lon' => $lon,
-            ];
-        } else {
-            $data = [];
-        }
-
-        $this->view('pages/index', $data);
-    }
-
-    public function weather($lat = null, $lon = null)
-    {
-        if ($_SERVER['REQUEST_METHOD'] == 'POST' && $lat == null && $lon == null) {
-            $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
-
-            $city = trim($_POST['city']);
-            $city = strtolower($city);
-            $city = ucfirst($city);
-
-            $geo = $this->weatherModel->getGeoByCity($city);
-
-            if (empty($geo)) {
-                $data = [
-                    'error' => 'Stadt nicht gefunden',
-                ];
-
-                $this->view('pages/weather', $data);
-                exit();
-            }
-
-            $lat = $geo[0]->lat;
-            $lon = $geo[0]->lon;
-        }
-
+    public function index() {
+      if (isset($_SESSION['location'])) {
+        $lat = $_SESSION['location']['lat'];
+        $lon = $_SESSION['location']['lon'];
         $weatherdata = $this->weatherModel->getWeatherByLatLon($lat, $lon);
         $city = $this->weatherModel->getCityByGeo($lat, $lon);
 
         $data = [
-            'weather' => $weatherdata,
-            'city' => $city,
-            'lat' => $lat,
-            'lon' => $lon,
+          'weather' => $weatherdata,
+          'city' => $city,
+          'lat' => $lat,
+          'lon' => $lon,
         ];
+      } else {
+        $data = [];
+      }
 
-        $this->view('pages/weather', $data);
+      $this->view('pages/index', $data);
     }
 
-    public function hourforecast($lat = null, $lon = null)
-    {
-        if ($_SERVER['REQUEST_METHOD'] == 'POST' && $lat == null && $lon == null) {
-            $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+    public function weather($lat = null, $lon = null) {
+      if ($_SERVER['REQUEST_METHOD'] == 'POST' && $lat == null && $lon == null) {
+        $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
 
-            $city = trim($_POST['city']);
-            $city = strtolower($city);
-            $city = ucfirst($city);
+        $city = trim($_POST['city']);
+        $city = strtolower($city);
+        $city = ucfirst($city);
 
-            $geo = $this->weatherModel->getGeoByCity($city);
+        $geo = $this->weatherModel->getGeoByCity($city);
 
-            if (empty($geo)) {
-                $data = [
-                    'error' => 'Stadt nicht gefunden',
-                ];
+        if (empty($geo)) {
+          $data = [
+            'error' => 'Stadt nicht gefunden',
+          ];
 
-                $this->view('pages/weather', $data);
-                exit();
-            }
-
-            $lat = $geo[0]->lat;
-            $lon = $geo[0]->lon;
+          $this->view('pages/weather', $data);
+          exit();
         }
 
-        $weatherdata = $this->weatherModel->getWeatherByLatLon($lat, $lon);
-        $city = $this->weatherModel->getCityByGeo($lat, $lon);
+        $lat = $geo[0]->lat;
+        $lon = $geo[0]->lon;
+      }
 
-        $data = [
-            'weather' => $weatherdata,
-            'city' => $city,
-            'lat' => $lat,
-            'lon' => $lon,
-        ];
+      $weatherdata = $this->weatherModel->getWeatherByLatLon($lat, $lon);
+      $city = $this->weatherModel->getCityByGeo($lat, $lon);
 
-        $this->view('pages/hourforecast', $data);
+      $data = [
+        'weather' => $weatherdata,
+        'city' => $city,
+        'lat' => $lat,
+        'lon' => $lon,
+      ];
+
+      $this->view('pages/weather', $data);
+    }
+
+    public function hourforecast($lat = null, $lon = null) {
+      if ($_SERVER['REQUEST_METHOD'] == 'POST' && $lat == null && $lon == null) {
+        $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+
+        $city = trim($_POST['city']);
+        $city = strtolower($city);
+        $city = ucfirst($city);
+
+        $geo = $this->weatherModel->getGeoByCity($city);
+
+        if (empty($geo)) {
+          $data = [
+            'error' => 'Stadt nicht gefunden',
+          ];
+
+          $this->view('pages/weather', $data);
+          exit();
+        }
+
+        $lat = $geo[0]->lat;
+        $lon = $geo[0]->lon;
+      }
+
+      $weatherdata = $this->weatherModel->getWeatherByLatLon($lat, $lon);
+      $city = $this->weatherModel->getCityByGeo($lat, $lon);
+
+      $data = [
+        'weather' => $weatherdata,
+        'city' => $city,
+        'lat' => $lat,
+        'lon' => $lon,
+      ];
+
+      $this->view('pages/hourforecast', $data);
     }
 
     public function dayforecast($lat = null, $lon = null)
@@ -145,4 +144,41 @@ class Pages extends Controller
         $this->view('pages/dayforecast', $data);
     }
 
+    public function pollution($lat = null, $lon = null) {
+      if ($_SERVER['REQUEST_METHOD'] == 'POST' && $lat == null && $lon == null) {
+        $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+
+        $city = trim($_POST['city']);
+        $city = strtolower($city);
+        $city = ucfirst($city);
+
+        $geo = $this->weatherModel->getGeoByCity($city);
+
+        if (empty($geo)) {
+          $data = [
+            'error' => 'Stadt nicht gefunden',
+          ];
+
+          $this->view('pages/weather', $data);
+          exit();
+        }
+
+        $lat = $geo[0]->lat;
+        $lon = $geo[0]->lon;
+      }
+
+      $weatherdata = $this->weatherModel->getWeatherByLatLon($lat, $lon);
+      $pollutiondata = $this->weatherModel->getPollutionByLatLon($lat, $lon);
+      $city = $this->weatherModel->getCityByGeo($lat, $lon);
+
+      $data = [
+        'pollution' => $pollutiondata,
+        'weather' => $weatherdata,
+        'city' => $city,
+        'lat' => $lat,
+        'lon' => $lon,
+      ];
+
+      $this->view('pages/pollution', $data);
+    }
 }

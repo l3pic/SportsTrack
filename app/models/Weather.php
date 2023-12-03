@@ -23,4 +23,10 @@
 
       return json_decode(getApiData($apiUrl));
     }
+
+    public function getPollutionByLatLon($lat, $lon) {
+      $apiUrl = 'https://api.openweathermap.org/data/2.5/air_pollution?lat=' . $lat . '&lon=' . $lon . '&appid=' . APIKEY;
+
+      return json_decode(getApiData($apiUrl));
+    }
   }
