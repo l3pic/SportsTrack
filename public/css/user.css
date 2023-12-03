@@ -1,5 +1,5 @@
-.main{
-    background-image: URL('https://picsum.photos/1920/1080'); /**erzeugt zufälliges Hintergrundbild von picsum**/
+.body{
+    background-image: URL('https://picsum.photos/1920/1080');
 
 }
 
