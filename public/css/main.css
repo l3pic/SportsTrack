@@ -7,7 +7,7 @@ html, body {
 }
 
 body {
-    background-image: url("https://picsum.photos/2560/1440");
+    /*background-image: url("https://picsum.photos/2560/1440");*/
     background-size: cover;
     background-repeat: no-repeat;
 }
