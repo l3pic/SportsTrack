@@ -29,6 +29,13 @@
 
     <div class="links-container">
       <div class="links">
+        <a href="<?= URLROOT; ?>/pages/weather/<?= $data['city'][0]->lat; ?>/<?= $data['city'][0]->lon; ?>"
+           class="link">
+          <i class="fa-solid fa-calendar-day"></i>
+          <span class="link-text">Heute</span>
+        </a>
+      </div>
+      <div class="links">
         <a href="<?= URLROOT; ?>/pages/hourforecast/<?= $data['city'][0]->lat; ?>/<?= $data['city'][0]->lon; ?>"
            class="link">
           <i class="fa-solid fa-clock"></i>
@@ -43,7 +50,7 @@
         </a>
       </div>
       <div class="links">
-        <a href="<?= URLROOT; ?>/pages/polution/<?= $data['city'][0]->lat; ?>/<?= $data['city'][0]->lon; ?>"
+        <a href="<?= URLROOT; ?>/pages/pollution/<?= $data['city'][0]->lat; ?>/<?= $data['city'][0]->lon; ?>"
            class="link">
           <i class="fa-solid fa-smog"></i>
           <span class="link-text">Luftverschmutzung</span>
@@ -68,10 +75,33 @@
       </div>
     </div>
   <?php endif; ?>
-  <form class="search-city" action="<?= URLROOT; ?>/pages/weather" method="POST">
-    <input type="text" name="city" placeholder="Stadt">
-    <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
-  </form>
+
+  <div class="fav-container">
+    <h2 class="fav-title">Favoriten</h2>
+    <?php if (isset($data['favoriten'])) : ?>
+      <?php foreach ($data['favoriten'] as $favorit) : ?>
+        <div class="fav">
+          <a href="<?= URLROOT; ?>/pages/weather/<?= $favorit->lat; ?>/<?= $favorit->lon; ?>" class="fav-link">
+            <i class="fa-solid fa-location-dot"></i>
+            <span class="fav-text"><?= $favorit->name; ?></span>
+          </a>
+          <a href="<?= URLROOT; ?>/pages/deletefav/<?= $favorit->id; ?>" class="fav-delete">
+            <i class="fa-solid fa-trash"></i>
+          </a>
+        </div>
+      <?php endforeach; ?>
+    <?php else : ?>
+      <?php if (isLoggedIn()) : ?>
+        <div class="fav">
+          <span class="fav-text">Keine Favoriten</span>
+        </div>
+      <?php else: ?>
+        <div class="fav">
+          <span class="fav-text">Nicht angemeldet</span>
+        </div>
+      <?php endif; ?>
+    <?php endif; ?>
+  </div>
 </div>
 
 <?php require APPROOT . '/views/inc/footer.php';?>

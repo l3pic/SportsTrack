@@ -1,4 +1,4 @@
-<head>
+a<head>
   <link rel="stylesheet" href="<?= URLROOT; ?>/css/weather.css">
 </head>
 <?php require_once APPROOT . '/views/inc/header.php'; ?>
@@ -6,6 +6,7 @@
 <?php if (isset($data['weather'])) : ?>
   <script>console.log(<?= json_encode($data['weather']); ?>)</script>
   <script>console.log(<?= json_encode($data['city']); ?>)</script>
+  <script>console.log(<?= json_encode($data['pollution']); ?>)</script>
   <div class="main">
     <div class="local-weather">
       <div class="lw-row">
@@ -28,7 +29,7 @@
     </form>
 
     <div class="links-container">
-      <div class="links aria-inactive">
+      <div class="links">
         <a href="<?= URLROOT; ?>/pages/weather/<?= $data['city'][0]->lat; ?>/<?= $data['city'][0]->lon; ?>"
            class="link">
           <i class="fa-solid fa-calendar-day"></i>
@@ -49,7 +50,7 @@
           <span class="link-text">Täglich</span>
         </a>
       </div>
-      <div class="links">
+      <div class="links aria-inactive">
         <a href="<?= URLROOT; ?>/pages/pollution/<?= $data['city'][0]->lat; ?>/<?= $data['city'][0]->lon; ?>"
            class="link">
           <i class="fa-solid fa-smog"></i>
@@ -57,7 +58,40 @@
         </a>
       </div>
     </div>
-  </div>
+    <div class="pollution-container">
+      <div class="pollution-card">
+        <h2 class="pollution-card-subtitle">Kohlenmonoxid - CO</h2>
+        <span class="pollution-card-value"><?= $data['pollution']->list[0]->components->co; ?><span class="pollution-card-unit">µg/m³</span></span>
+      </div>
+      <div class="pollution-card">
+        <h2 class="pollution-card-title">Ammoniak - NH<sub>3</sub></h2>
+        <span class="pollution-card-value"><?= $data['pollution']->list[0]->components->nh3; ?><span class="pollution-card-unit">µg/m³</span></span>
+      </div>
+      <div class="pollution-card">
+        <h2 class="pollution-card-title">Stickstoffmonoxid - NO</h2>
+        <span class="pollution-card-value"><?= $data['pollution']->list[0]->components->no; ?><span class="pollution-card-unit">µg/m³</span></span>
+      </div>
+      <div class="pollution-card">
+        <h2 class="pollution-card-title">Stickstoffdioxid - NO<sub>2</sub></h2>
+        <span class="pollution-card-value"><?= $data['pollution']->list[0]->components->no2; ?><span class="pollution-card-unit">µg/m³</span></span>
+      </div>
+      <div class="pollution-card">
+        <h2 class="pollution-card-title">Ozon - O<sub>3</sub></h2>
+        <span class="pollution-card-value"><?= $data['pollution']->list[0]->components->o3; ?><span class="pollution-card-unit">µg/m³</span></span>
+      </div>
+      <div class="pollution-card">
+        <h2 class="pollution-card-title">Feinstaub - PM<sub>2,5</sub></h2>
+        <span class="pollution-card-value"><?= $data['pollution']->list[0]->components->pm2_5; ?><span class="pollution-card-unit">µg/m³</span></span>
+      </div>
+      <div class="pollution-card">
+        <h2 class="pollution-card-title">Feinstaub - PM<sub>10</sub></h2>
+        <span class="pollution-card-value"><?= $data['pollution']->list[0]->components->pm10; ?><span class="pollution-card-unit">µg/m³</span></span>
+      </div>
+      <div class="pollution-card">
+        <h2 class="pollution-card-title">Schwefeldioxid - SO<sub>2</sub></h2>
+        <span class="pollution-card-value"><?= $data['pollution']->list[0]->components->so2; ?><span class="pollution-card-unit">µg/m³</span></span>
+      </div>
+    </div>
 
 <?php else : ?>
 <!--error-->

@@ -16,7 +16,7 @@
                   <li><a href="<?= URLROOT;?>/pages/minforecast/50/50"><i class="fa-regular fa-clock"></i> Minütlich</a></li>
                   <li><a href="<?= URLROOT;?>/pages/hourforecast/50/50"><i class="fa-solid fa-clock"></i> Stündlich</a></li>
                   <li><a href="<?= URLROOT;?>/pages/dayforecast/50/50"><i class="fa-solid fa-calendar-days"></i> Täglich</a></li>
-                  <li><a href="<?= URLROOT;?>/pages/polution/50/50"><i class="fa-solid fa-smog"></i> Luftverschmutzung</a></li>
+                  <li><a href="<?= URLROOT;?>/pages/pollution/50/50"><i class="fa-solid fa-smog"></i> Luftverschmutzung</a></li>
                 </ul>
               </details>
             <?php endforeach; ?>
