@@ -61,8 +61,20 @@
         <div class="pollution-container">
             <div class="pollution-card">
                 <h2 class="pollution-card-subtitle">Windgrad</h2>
-                <span class="pollution-card-value"><?= $data['weather']->current->wind_deg ; ?><span
-                            class="pollution-card-unit"></span></span>
+                <span class="pollution-card-value"><?= $data['weather']->current->wind_deg; ?><span
+                            class="pollution-card-unit"></span>&deg</span>
+                <div class="arrow-container">
+                    <span class="direction">N</span>
+                    <span class="direction">O</span>
+                    <span class="direction">S</span>
+                    <span class="direction">W</span>
+                    <i class="fa-solid fa-location-arrow arrow" id="wind_direction"></i>
+                    <script>
+                        var arrow = $('#wind_direction');
+                        arrow.css('transform','translate(-50%, -50%) rotate(<?= $data['weather']->current->wind_deg - 45;?>deg)');
+                    </script>
+                </div>
+
             </div>
             <div class="pollution-card">
                 <h2 class="pollution-card-title"> Windgeschwindigkeit</h2>
@@ -71,18 +83,18 @@
             </div>
             <div class="pollution-card">
                 <h2 class="pollution-card-title">Klare Sicht</h2>
-                <span class="pollution-card-value"><?= $data['weather']->current-> visibility; ?><span
-                            class="pollution-card-unit"></span></span>
+                <span class="pollution-card-value"><?= $data['weather']->current->visibility; ?><span
+                            class="pollution-card-unit"> Meter Sichtweite</span></span>
             </div>
             <div class="pollution-card">
                 <h2 class="pollution-card-title">Atmosphärischer Druck</h2>
                 <span class="pollution-card-value"><?= $data['weather']->current->pressure; ?><span
-                            class="pollution-card-unit"></span></span>
+                            class="pollution-card-unit"></span>hPa</span>
             </div>
             <div class="pollution-card">
                 <h2 class="pollution-card-title">Luftfeuchtigkeit</h2>
                 <span class="pollution-card-value"><?= $data['weather']->current->humidity; ?><span
-                            class="pollution-card-unit"></span></span>
+                            class="pollution-card-unit">%</span></span>
             </div>
             <div class="pollution-card">
                 <h2 class="pollution-card-title">UVI-Index</h2>
@@ -92,7 +104,7 @@
             <div class="pollution-card">
                 <h2 class="pollution-card-title">Wolkenaussicht</sub></h2>
                 <span class="pollution-card-value"><?= $data['weather']->current->clouds; ?><span
-                            class="pollution-card-unit"></span></span>
+                            class="pollution-card-unit">Wolken in Aussicht</span></span>
             </div>
         </div>
     </div>
