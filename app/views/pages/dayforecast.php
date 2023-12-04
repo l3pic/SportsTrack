@@ -23,12 +23,12 @@
             </div>
         </div>
 
-        /*Suchleiste*/
+<!--        Suchleiste-->
         <form class="search-city" action="<?= URLROOT; ?>/pages/dayforecast" method="POST">
             <input type="text" name="city" placeholder="Stadt" required>
             <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
         </form>
-        /*Container*/
+<!--       Container-->
         <div class="links-container">
             <div class="links">
                 <a href="<?= URLROOT; ?>/pages/weather/<?= $data['city'][0]->lat; ?>/<?= $data['city'][0]->lon; ?>"

@@ -71,7 +71,7 @@
                     <i class="fa-solid fa-location-arrow arrow" id="wind_direction"></i>
                     <script>
                         var arrow = $('#wind_direction');
-                        arrow.css('transform','translate(-50%, -50%) rotate(<?= $data['weather']->current->wind_deg - 45;?>deg)');
+                        arrow.css('transform', 'translate(-50%, -50%) rotate(<?= $data['weather']->current->wind_deg - 45;?>deg)');
                     </script>
                 </div>
 
@@ -102,13 +102,21 @@
                             class="pollution-card-unit"></span></span>
             </div>
             <div class="pollution-card">
-                <h2 class="pollution-card-title">Wolkenaussicht</sub></h2>
+                <h2 class="pollution-card-title">Wolkenaussicht</h2>
                 <span class="pollution-card-value"><?= $data['weather']->current->clouds; ?><span
                             class="pollution-card-unit">Wolken in Aussicht</span></span>
             </div>
         </div>
     </div>
 <?php else : ?>
+    <div class="main">
+        <div class="pollution-card-error">
+            <h2 class="pollution-card-title-error">Error</h2>
+            <span  class="pollution-card-title-error">
+                Diese Stadt existiert nicht!
+            </span>
+        </div>
+    </div>
     <!--error-->
 <?php endif; ?>
 
