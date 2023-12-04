@@ -94,6 +94,18 @@ a<head>
     </div>
 
 <?php else : ?>
+    <div class="main">
+        <form class="search-city" action="<?= URLROOT; ?>/pages/weather" method="POST">
+            <input type="text" name="city" placeholder="Stadt" required>
+            <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+        </form>
+        <div class="pollution-card-error">
+            <h2 class="pollution-card-title-error">Error</h2>
+            <span class="pollution-card-title-error">
+                Diese Stadt existiert nicht!
+            </span>
+        </div>
+    </div>
 <!--error-->
 <?php endif; ?>
 
