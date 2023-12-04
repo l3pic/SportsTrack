@@ -86,7 +86,7 @@
               <i class="fa-solid fa-location-dot"></i>
               <span class="fav-text"><?= $favorit->name; ?></span>
             </a>
-            <a href="<?= URLROOT; ?>/pages/deletefav/<?= $favorit->id; ?>" class="fav-delete">
+            <a href="#" onclick="removeFavorite(<?= $favorit->id; ?>)" class="fav-delete">
               <i class="fa-solid fa-trash"></i>
             </a>
           </div>
