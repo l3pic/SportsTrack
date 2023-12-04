@@ -23,7 +23,7 @@
                         <?php endforeach; ?>
                     <?php endif; ?>
                   <?php if (!$isFav) : ?>
-                    <i class="fa-regular fa-heart fav-toggle" onclick="addFavorite(<?= $data['city'][0]->lat; ?>, <?= $data['city'][0]->lat; ?>, '<?= $data['city'][0]->name; ?>');"></i>
+                    <i class="fa-regular fa-heart fav-toggle" onclick="addFavorite(<?= $data['city'][0]->lat; ?>, <?= $data['city'][0]->lon; ?>, '<?= $data['city'][0]->name; ?>');"></i>
                   <?php endif; ?>
                 <?php else : ?>
                   <i class="fa-regular fa-heart fav-toggle" onclick="window.location.href='<?= URLROOT; ?>/users/login'"></i>
