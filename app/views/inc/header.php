@@ -11,8 +11,6 @@
   <link rel="stylesheet" href="<?= URLROOT; ?>/css/header.css">
   <link rel="stylesheet" href="<?= URLROOT; ?>/css/sidenav.css">
   <link rel="stylesheet" href="<?= URLROOT; ?>/css/main.css">
-  <link rel="stylesheet" href="<?= URLROOT; ?>/css/aos.css">
-  <script src="<?= URLROOT; ?>/js/aos.js"></script>
   <script>
     const locationIsset = <?= checkSessionVar('location'); ?>;
     const urlroot = "<?= URLROOT; ?>";

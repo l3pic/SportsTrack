@@ -63,7 +63,7 @@ if (locationIsset == 0) {
             console.log("Latitude: " + latitude + ", Longitude: " + longitude);
             //ajax set location wit setSessionVar
             $.ajax({
-                url: '../ajax/setSessionVar.php',
+                url: urlroot + '/ajax/setSessionVar.php',
                 type: 'POST',
                 data: {
                     varName: 'location',
