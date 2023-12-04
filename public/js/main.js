@@ -9,6 +9,38 @@ function togglesidenav(element) {
     }
 }
 
+function addFavorite(lat, lon, name) {
+    $.ajax({
+        url: urlroot + '/ajax/favorite.php',
+        type: 'POST',
+        data: {
+            op: 'add',
+            lat: lat,
+            lon: lon,
+            name: name
+        },
+        success: function (data) {
+            jsonData = JSON.parse(data);
+            if(jsonData.success = true) window.location.reload();
+        }
+    });
+}
+
+function removeFavorite(id) {
+    $.ajax({
+        url: urlroot + '/ajax/favorite.php',
+        type: 'POST',
+        data: {
+            op: 'remove',
+            id: id
+        },
+        success: function (data) {
+            jsonData = JSON.parse(data);
+            if(jsonData.success = true) window.location.reload();
+        }
+    });
+}
+
 if (locationIsset == 0) {
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(function (position) {
@@ -18,7 +50,7 @@ if (locationIsset == 0) {
             console.log("Latitude: " + latitude + ", Longitude: " + longitude);
             //ajax set location wit setSessionVar
             $.ajax({
-                url: '../ajax/setSessionVar.php',
+                url: urlroot + '/ajax/setSessionVar.php',
                 type: 'POST',
                 data: {
                     varName: 'location',

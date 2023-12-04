@@ -1,3 +1,4 @@
+<?php if(!isset($_SESSION)) session_start();?>
 <!doctype html>
 <html lang="de">
 <head>
@@ -12,7 +13,10 @@
   <link rel="stylesheet" href="<?= URLROOT; ?>/css/main.css">
   <link rel="stylesheet" href="<?= URLROOT; ?>/css/aos.css">
   <script src="<?= URLROOT; ?>/js/aos.js"></script>
-  <script>const locationIsset = <?= checkSessionVar('location'); ?></script>
+  <script>
+    const locationIsset = <?= checkSessionVar('location'); ?>;
+    const urlroot = "<?= URLROOT; ?>";
+  </script>
   <script src="<?= URLROOT; ?>/js/main.js" defer></script>
   <script src="<?= URLROOT; ?>/js/jquery-3.7.0.min.js"></script>
   <script src="https://kit.fontawesome.com/d2f6aa7ce4.js" crossorigin="anonymous"></script>

@@ -63,4 +63,12 @@
 
       return $this->db->single();
     }
+
+    public function getFavoritenByUserid($usrid) {
+      $this->db->query('SELECT * FROM favoriten WHERE userid = :usr_id');
+      // Bind values
+      $this->db->bind(':usr_id', $usrid);
+
+      return $this->db->resultSet();
+    }
   }

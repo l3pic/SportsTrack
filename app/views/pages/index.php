@@ -78,18 +78,20 @@
 
   <div class="fav-container">
     <h2 class="fav-title">Favoriten</h2>
-    <?php if (isset($data['favoriten'])) : ?>
-      <?php foreach ($data['favoriten'] as $favorit) : ?>
-        <div class="fav">
-          <a href="<?= URLROOT; ?>/pages/weather/<?= $favorit->lat; ?>/<?= $favorit->lon; ?>" class="fav-link">
-            <i class="fa-solid fa-location-dot"></i>
-            <span class="fav-text"><?= $favorit->name; ?></span>
-          </a>
-          <a href="<?= URLROOT; ?>/pages/deletefav/<?= $favorit->id; ?>" class="fav-delete">
-            <i class="fa-solid fa-trash"></i>
-          </a>
-        </div>
-      <?php endforeach; ?>
+    <?php if (!empty($data['favoriten'])) : ?>
+      <div class="fav-grid">
+        <?php foreach ($data['favoriten'] as $favorit) : ?>
+          <div class="fav">
+            <a href="<?= URLROOT; ?>/pages/weather/<?= $favorit->lat; ?>/<?= $favorit->lon; ?>" class="fav-link">
+              <i class="fa-solid fa-location-dot"></i>
+              <span class="fav-text"><?= $favorit->name; ?></span>
+            </a>
+            <a href="<?= URLROOT; ?>/pages/deletefav/<?= $favorit->id; ?>" class="fav-delete">
+              <i class="fa-solid fa-trash"></i>
+            </a>
+          </div>
+        <?php endforeach; ?>
+      </div>
     <?php else : ?>
       <?php if (isLoggedIn()) : ?>
         <div class="fav">

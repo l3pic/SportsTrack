@@ -4,22 +4,15 @@
       <li><a href="<?= URLROOT;?>/"><i class="fa-solid fa-house"></i> Home</a></li>
       <details>
         <summary><i class="fa-solid fa-star"></i> Favoriten</summary>
-        <ul>
-<!--          hier aus Datenbank einfügen-->
-<!--          bsp:-->
+        <ul id="snfavorites">
           <?php if (isLoggedIn()) : ?>
-            <?php foreach ($data['favoriten'] as $favorit) : ?>
-              <details class="sidenav-s1">
-                <summary><i class="fa-solid fa-location-dot"></i> Berlin</summary>
-                <ul>
-                  <li><a href="<?= URLROOT;?>/pages/weather/50/50"><i class="fa-solid fa-cloud"></i> Wetter</a></li>
-                  <li><a href="<?= URLROOT;?>/pages/minforecast/50/50"><i class="fa-regular fa-clock"></i> Minütlich</a></li>
-                  <li><a href="<?= URLROOT;?>/pages/hourforecast/50/50"><i class="fa-solid fa-clock"></i> Stündlich</a></li>
-                  <li><a href="<?= URLROOT;?>/pages/dayforecast/50/50"><i class="fa-solid fa-calendar-days"></i> Täglich</a></li>
-                  <li><a href="<?= URLROOT;?>/pages/pollution/50/50"><i class="fa-solid fa-smog"></i> Luftverschmutzung</a></li>
-                </ul>
-              </details>
-            <?php endforeach; ?>
+            <?php if (!empty($data['favoriten'])) : ?>
+              <?php foreach ($data['favoriten'] as $favorit) : ?>
+                <li><a href="<?= URLROOT;?>/pages/weather/<?= $favorit->lat; ?>/<?= $favorit->lon; ?>" class="favorite-link-sn"><i class="fa-solid fa-cloud"></i> <?= $favorit->name ?></a></li>
+              <?php endforeach; ?>
+            <?php else : ?>
+              <li><a href="#">Keine Favoriten</a></li>
+            <?php endif; ?>
           <?php else : ?>
             <li><a href="<?= URLROOT;?>/users/login">Nicht angemeldet!</a></li>
           <?php endif; ?>

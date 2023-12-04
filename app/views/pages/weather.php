@@ -11,6 +11,23 @@
             <div class="lw-row">
                 <i class="fa-solid fa-location-dot lw-loc"></i>
                 <h1 class="lw-city"><?= $data['city'][0]->name; ?></h1>
+                <?php if (isLoggedIn()) : ?>
+                    <?php $isFav = false; ?>
+                    <?php if (!empty($data['favoriten'])) : ?>
+                        <?php foreach ($data['favoriten'] as $favorit) : ?>
+                            <?php if ($favorit->name == $data['city'][0]->name) : ?>
+                              <i class="fa-solid fa-heart fav-toggle" onclick="removeFavorite('<?= $favorit->id ?>');"></i>
+                              <?php $isFav = true; ?>
+                              <?php break; ?>
+                            <?php endif; ?>
+                        <?php endforeach; ?>
+                    <?php endif; ?>
+                  <?php if (!$isFav) : ?>
+                    <i class="fa-regular fa-heart fav-toggle" onclick="addFavorite(<?= $data['city'][0]->lat; ?>, <?= $data['city'][0]->lat; ?>, '<?= $data['city'][0]->name; ?>');"></i>
+                  <?php endif; ?>
+                <?php else : ?>
+                  <i class="fa-regular fa-heart fav-toggle" onclick="window.location.href='<?= URLROOT; ?>/users/login'"></i>
+                <?php endif; ?>
             </div>
             <div class="lw-row">
                 <img src="https://openweathermap.org/img/wn/<?= $data['weather']->current->weather[0]->icon; ?>@2x.png"
@@ -60,7 +77,7 @@
         </div>
         <div class="pollution-container">
             <div class="pollution-card">
-                <h2 class="pollution-card-subtitle">Windgrad</h2>
+                <h2 class="pollution-card-subtitle">Windrichtung</h2>
                 <span class="pollution-card-value"><?= $data['weather']->current->wind_deg; ?><span
                             class="pollution-card-unit"></span>&deg</span>
                 <div class="arrow-container">
