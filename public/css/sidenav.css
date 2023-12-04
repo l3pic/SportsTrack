@@ -64,6 +64,10 @@
     border-bottom: none;
 }
 
+.favorite-link-sn {
+    padding-left: 30px;
+}
+
 .open {
     margin-left: 250px;
 }
