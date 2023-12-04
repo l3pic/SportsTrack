@@ -1,4 +1,4 @@
-a<head>
+<head>
   <link rel="stylesheet" href="<?= URLROOT; ?>/css/weather.css">
 </head>
 <?php require_once APPROOT . '/views/inc/header.php'; ?>
